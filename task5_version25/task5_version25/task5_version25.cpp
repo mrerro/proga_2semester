@@ -12,6 +12,9 @@ double findeInFile(std::string fileName, std::string blockName, std::string para
 		if (!fs) {
 			throw 2;
 		}
+		while (getline(fs, str)) {
+			str.erase(remove_if(str.begin(), str.end(), isspace), str.end());
+		}
 		fs.close();
 		std::cout << "file ended before request" << std::endl;
 		return NULL;
