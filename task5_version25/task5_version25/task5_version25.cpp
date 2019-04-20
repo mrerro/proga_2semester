@@ -9,6 +9,9 @@ double findeInFile(std::string fileName, std::string blockName, std::string para
 	bool isBlockFound = false;
 	bool isParemetrFound = false;
 	try {
+		if (fileName.length() == 0 || blockName.length() == 0 || parametrName.length() == 0) {
+			throw 1;
+		}		
 		fs.open(fileName, std::fstream::in);
 		if (!fs) {
 			throw 2;
@@ -38,6 +41,9 @@ double findeInFile(std::string fileName, std::string blockName, std::string para
 	catch (int error) {
 		switch (error)
 		{
+		case 1:
+			std::cout << "Error passed empty parameter" << std::endl;
+			break;
 		case 2:
 			std::cout << "Error with file name " << fileName << " no in current directory" << std::endl;
 			break;
