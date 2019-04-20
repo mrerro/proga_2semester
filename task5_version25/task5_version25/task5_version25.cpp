@@ -59,7 +59,33 @@ double findeInFile(std::string fileName, std::string blockName, std::string para
 
 int main()
 {
-	if (auto a = findeInFile("inpu.txt", "", "") != NULL) {
-		std::cout << a;
-	}	
+	double a = findeInFile("input.txt", "A_material", "N");
+	if (a != NULL) {
+		std::cout << std::to_string(a) << std::endl;
+	}
+	std::cout << std::endl;
+	a = findeInFile("input.txt", "Data", "Pressure");
+	if (a != NULL) {
+		std::cout << std::to_string(a) << std::endl;
+	}
+	std::cout << std::endl;
+	a = findeInFile("input.txt", "Constants", "kB");
+	if (a != NULL) {
+		std::cout << std::to_string(a) << std::endl;
+	}
+	std::cout << std::endl;
+	a = findeInFile("inp.txt", "Constants", "kB");
+	if (a != NULL) {
+		std::cout << std::to_string(a) << std::endl;
+	}
+	std::cout << std::endl;
+	a = findeInFile("input.txt", "Co", "kB");
+	if (a != NULL) {
+		std::cout << std::to_string(a) << std::endl;
+	}
+	std::cout << std::endl;
+	a = findeInFile("input.txt", "Constants", "");
+	if (a != NULL) {
+		std::cout << std::to_string(a) << std::endl;
+	}
 }
