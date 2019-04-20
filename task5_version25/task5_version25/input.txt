@@ -1,0 +1,18 @@
+Data
+{
+Temperature = 273
+Pressure = 1e+5
+N= 100
+}
+Constants
+{
+kB=1.38e-23
+}
+A_material
+{
+N=100
+}
+B_material
+{
+N=50
+}
