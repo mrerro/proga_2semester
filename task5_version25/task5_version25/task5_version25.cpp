@@ -15,6 +15,17 @@ double findeInFile(std::string fileName, std::string blockName, std::string para
 		}
 		while (getline(fs, str)) {
 			str.erase(remove_if(str.begin(), str.end(), isspace), str.end());
+			if (isBlockFound && !isParemetrFound) {
+				if (!str.find(parametrName)) {
+					isParemetrFound = true;
+					std::cout << "Parametr found: " << str << std::endl;
+					fs.close();
+					return std::stod(str.substr(str.find("=") + 1, str.length() - str.find("=")));
+				}
+				if (str == "}" && !isParemetrFound) {
+					throw 3;
+				}
+			}
 			if (str == blockName && !isBlockFound) {
 				isBlockFound = true;
 				std::cout << "Block found: " << str << std::endl;
@@ -30,6 +41,10 @@ double findeInFile(std::string fileName, std::string blockName, std::string para
 		case 2:
 			std::cout << "Error with file name " << fileName << " no in current directory" << std::endl;
 			break;
+		case 3:
+			std::cout << "Error there is no such parameter " << parametrName << " in the block " << blockName << std::endl;
+			break;
+		}
 		fs.close();
 		return NULL;
 	}
