@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include <fstream>
 #include <string>
+#include <algorithm>
 
 double findeInFile(std::string fileName, std::string blockName, std::string parametrName) {
 	std::fstream fs;
