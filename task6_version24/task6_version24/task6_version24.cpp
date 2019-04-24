@@ -12,7 +12,7 @@ void myDequeTester() { //задача 1
 	std::list <int> five = { 5 };
 	//вставка в конец
 	myDeque.push_back(two);
-	//ыставка в начало
+	//вставка в начало
 	myDeque.push_front(one);
 	myDeque.push_front(three);
 	//вставка в конец
