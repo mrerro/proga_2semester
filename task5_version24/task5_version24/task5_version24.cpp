@@ -105,5 +105,13 @@ void parseDB(std::string fileName) {
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	setlocale(LC_ALL, "Russian");
+	std::cout << "1_________________" << std::endl;
+	parseDB("input.txt");
+	std::cout << "2_________________" << std::endl;
+	parseDB("input2.txt");
+	std::cout << "3_________________" << std::endl;
+	parseDB("i.txt");
+	std::cout << "4_________________" << std::endl;
+	parseDB("");
 }
