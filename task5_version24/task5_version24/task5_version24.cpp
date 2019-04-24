@@ -6,6 +6,48 @@
 #include <locale>
 
 
+std::string getGroupNumber(std::string str) {
+	str = str.substr(0, str.length() - 1);
+	std::string out = "";
+	bool split = false;
+	for (std::string::iterator it = str.begin(); it != str.end(); ++it)
+	{
+		if (split) {
+			out += *it;
+		}
+		if (*it == ' ') {
+			split = true;
+		}
+
+	}
+	return out;
+}
+
+std::string getPerson(std::string str, std::string group) {
+	std::string out = "";
+	bool split = false;
+	int splitCount = 0;
+	for (std::string::iterator it = str.begin(); it != str.end(); ++it)
+	{
+		if (split) {
+			if (splitCount == 3) { //после имени вставить группу
+				out += group + " ";
+				splitCount = -1;
+			}
+			if (*it == '(' || *it == ')') { //выкидываем скобки
+			}
+			else {
+				out += *it;
+			}
+		}
+		if (*it == ' ') {
+			split = true;
+			splitCount += 1;
+		}
+	}
+	return out;
+}
+
 void parseDB(std::string fileName) {
 	std::fstream fs;
 	std::string str;
@@ -20,6 +62,14 @@ void parseDB(std::string fileName) {
 		fs.open(fileName, std::fstream::in);
 		if (!fs) {
 			throw 2;
+		}
+		while (getline(fs, str)) {
+			if (!str.find("Группа")) {
+				group = getGroupNumber(str);
+			}
+			else if (!str.find("[")) {
+				out.push_back(getPerson(str, group));
+			}
 		}
 	}
 	catch (int error) {
