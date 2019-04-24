@@ -71,6 +71,12 @@ void parseDB(std::string fileName) {
 				out.push_back(getPerson(str, group));
 			}
 		}
+		if (out.size() == 0) {
+			throw 3;
+		}
+		else {
+			out.sort();
+		}
 	}
 	catch (int error) {
 		switch (error)
