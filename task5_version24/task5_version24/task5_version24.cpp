@@ -77,6 +77,14 @@ void parseDB(std::string fileName) {
 		else {
 			out.sort();
 		}
+		fs.close();
+		fs.open("out.txt", std::fstream::out);
+		fs << "ФамилияИмя Группа Год рождения\n";
+		for (std::string string : out) {
+			fs << string + "\n";
+		}
+		fs.close();
+		std::cout << "Success!!!" << std::endl;
 	}
 	catch (int error) {
 		switch (error)
