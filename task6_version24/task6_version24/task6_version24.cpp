@@ -2,6 +2,7 @@
 #include <deque>
 #include <list>
 #include <vector>
+#include <algorithm>
 
 void myDequeTester() { //задача 1
 	std::deque <std::list<int>> myDeque = {};
@@ -22,16 +23,26 @@ void myDequeTester() { //задача 1
 	myDeque.insert(it, five);
 
 	//вывод через итераторы
-	for (std::list <int> list : myDeque) {
-		for (int item : list) {
-			std::cout << list.front() << " ";
+	for (std::deque <std::list<int>>::iterator i = myDeque.begin(); i != myDeque.end(); i++) {
+		for (std::list<int>::iterator j = i->begin(); j != i->end(); j++) {
+			std::cout << *j << " ";
+		}
+		std::cout << std::endl;
+	}
+
+	std::reverse(myDeque.begin(), myDeque.end());
+
+	//вывод через итераторы
+	for (std::deque <std::list<int>>::iterator i = myDeque.begin(); i != myDeque.end(); i++) {
+		for (std::list<int>::iterator j = i->begin(); j != i->end(); j++) {
+			std::cout << *j << " ";
 		}
 		std::cout << std::endl;
 	}
 }
 
 void thinOutTheVector() {	//задача 2 "Проредить vector tepm относительно vector values"
-	
+
 	std::vector <int> temp = { 1,2,3,1,42,38,5,6,5,80,60 };
 	std::vector <int> values = { 1,2,42,38 };
 	for (std::vector <int>::iterator it = temp.begin(); it != temp.end(); ++it)
@@ -53,6 +64,6 @@ void thinOutTheVector() {	//задача 2 "Проредить vector tepm от�
 
 int main()
 {
-	//myDequeTester();	
 	thinOutTheVector();
+	myDequeTester();
 }
